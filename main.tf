@@ -8,3 +8,10 @@ resource "google_artifact_registry_repository" "repo" {
   format        = var.format
   description   = local.description
 }
+
+resource "google_artifact_registry_repository_iam_member" "writer" {
+  location   = google_artifact_registry_repository.repo.location
+  repository = google_artifact_registry_repository.repo.name
+  role       = "roles/artifactregistry.writer"
+  member     = "user:${var.user_email}" # You'll need to add this variable
+}

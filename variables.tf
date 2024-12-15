@@ -20,3 +20,8 @@ variable "region" {
   default     = "us-central1"
   description = "Region where the artifact registry will be hosted"
 }
+
+variable "user_email" {
+  description = "Email address of the user to grant repository access"
+  type        = string
+}
